@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Set il titolo dell'app
-st.title("Comabbio Cup")
+st.title("Comabbio Cup - Gloria e Disagio")
 
 # Carica il file CSV in un DataFrame di pandas
 def load_data(file_name):
@@ -26,12 +26,7 @@ def tab_regolamento():
     st.markdown("""
     # Regolamento della Comabbio Cup
 
-    La Comabbio Cup è un torneo di calcio che si svolge ogni anno a Comabbio.
-    Il regolamento prevede che le squadre partecipanti siano divise in due gruppi,
-    con partite di andata e ritorno. La squadra vincitrice del torneo sarà quella
-    che avrà totalizzato più punti alla fine del torneo.
-
-    Per ulteriori informazioni, si prega di contattare l'organizzazione del torneo.
+    La Comabbio Cup è un torneo di beach volley che blah blah blah
     """)
 
 # Tab "Documenti"
@@ -41,8 +36,7 @@ def tab_documenti():
 
     Di seguito è riportata la lista dei documenti disponibili per il download:
     * [Regolamento del torneo](documenti/regolamento.pdf)
-    * [Modulo di iscrizione](documenti/iscrizione.pdf)
-    * [Lista dei partecipanti](documenti/partecipanti.pdf)
+    * [Template programma](documenti/programma.pdf)
     """)
 
 # Funzione principale
