@@ -48,14 +48,14 @@ def tab_documenti():
 # Funzione principale
 def main():
     # Crea le tab
-    tab_classifiche, tab_regolamento, tab_documenti = st.tabs(["Classifiche", "Regolamento", "Documenti"])
+    tabs = st.tabs(["Classifiche", "Regolamento", "Documenti"])
 
     # Aggiungi il contenuto alle tab
-    with tab_classifiche:
+    with tabs[0]:
         tab_classifiche()
-    with tab_regolamento:
+    with tabs[1]:
         tab_regolamento()
-    with tab_documenti:
+    with tabs[2]:
         tab_documenti()
 
 if __name__ == "__main__":
