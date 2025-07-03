@@ -26,7 +26,13 @@ def tab_regolamento():
     st.markdown("""
     # Regolamento della Comabbio Cup
 
-    La Comabbio Cup è un torneo di beach volley che blah blah blah
+    Il torneo si compone di un numero variabile di tappe.
+
+    In ogni tappa partecipano N squadre, composte da 2 giocatori ciascuna.
+
+    Le squadre sono formate casualmente all’inizio di ogni tappa tramite sorteggio.
+
+    Ogni giocatore accumula punti individuali in base alla posizione finale ottenuta dalla sua squadra.
     """)
 
 # Tab "Documenti"
