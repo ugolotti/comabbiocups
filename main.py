@@ -52,7 +52,7 @@ def tab_sorteggio():
     data = load_data("standings.csv")
 
     # Seleziona i partecipanti
-    partecipanti = st.multiselect("Seleziona i partecipanti", data["name"].tolist())
+    partecipanti = st.multiselect("Seleziona i partecipanti", data["Nome"].tolist())
 
     # Se sono stati selezionati partecipanti, mostra i pulsanti
     if partecipanti:
@@ -76,7 +76,7 @@ def tab_sorteggio():
                 partecipanti_ordinati = [nome for nome in partecipanti]
                 punteggi = {}
                 for index, row in data.iterrows():
-                    punteggi[row["name"]] = row["result1"] + row["result2"] + row["result3"]
+                    punteggi[row["Nome"]] = row["Tappa 1"]
                 partecipanti_ordinati.sort(key=lambda x: punteggi[x], reverse=True)
                 # Accoppia i partecipanti
                 coppie = []
