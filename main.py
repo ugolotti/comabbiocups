@@ -96,16 +96,16 @@ def main():
 
     # Aggiungi il contenuto alle tab
     with tabs[0]:
-        st.header("<font color='red'>Classifiche</font>")
+        st.header("Classifiche")
         tab_classifiche()
     with tabs[1]:
-        st.header("<font color='blue'>Regolamento</font>")
+        st.header("Regolamento")
         tab_regolamento()
     with tabs[2]:
-        st.header("<font color='green'>Documenti</font>")
+        st.header("Documenti")
         tab_documenti()
     with tabs[3]:
-        st.header("<font color='purple'>Sorteggio</font>")
+        st.header("Sorteggio")
         tab_sorteggio()
 
 if __name__ == "__main__":
