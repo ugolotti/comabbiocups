@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import random
 
 # Set il titolo dell'app
 st.title("Gloria e Disagio - Comabbio Cup")
