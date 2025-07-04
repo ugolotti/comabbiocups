@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Set il titolo dell'app
-st.title("Comabbio Cup - Gloria e Disagio")
+st.title("Gloria e Disagio - Comabbio Cup")
 
 # Carica il file CSV in un DataFrame di pandas
 def load_data(file_name):
