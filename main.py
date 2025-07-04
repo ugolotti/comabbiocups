@@ -9,6 +9,11 @@ st.title("Gloria e Disagio - Comabbio Cup")
 def load_data(file_name):
     try:
         data = pd.read_csv(file_name)
+        # Calcola il punteggio per ogni tappa
+        data["points"] = 0
+        for col in data.columns:
+            if col.startswith("Tappa"):
+                data["points"] += data[col].apply(lambda x: 100 if x == 1 else (80 if x == 2 else (60 if x == 3 else (40 if x == 4 else 10))))
         return data
     except Exception as e:
         st.error(f"Errore di caricamento dei dati: {e}")
@@ -69,15 +74,15 @@ def tab_sorteggio():
                     else:
                         coppie.append((partecipanti[i], " Bye"))
                 st.write("Coppie:")
-                for coppia in coppie:
-                    st.write(coppia)
+                df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
+                st.table(df_coppie)
         with col2:
             if st.button("Ranking-based"):
                 # Ordina i partecipanti per punteggio
                 partecipanti_ordinati = [nome for nome in partecipanti]
                 punteggi = {}
                 for index, row in data.iterrows():
-                    punteggi[row["Nome"]] = row["Tappa 1"]
+                    punteggi[row["Nome"]] = row["points"]
                 partecipanti_ordinati.sort(key=lambda x: punteggi[x], reverse=True)
                 # Accoppia i partecipanti
                 coppie = []
@@ -86,8 +91,8 @@ def tab_sorteggio():
                 if len(partecipanti_ordinati) % 2 == 1:
                     coppie.append((partecipanti_ordinati[len(partecipanti_ordinati) // 2], " Bye"))
                 st.write("Coppie:")
-                for coppia in coppie:
-                    st.write(coppia)
+                df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
+                st.table(df_coppie)
 
 # Funzione principale
 def main():
