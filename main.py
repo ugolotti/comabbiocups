@@ -5,6 +5,21 @@ import random
 # Set il titolo dell'app
 st.title("Gloria e Disagio - Comabbio Cup")
 
+# Funzione per calcolare i punti in base al piazzamento
+def calcola_punti(piazzamento):
+    if pd.isnull(piazzamento):
+        return 0
+    elif piazzamento == 1:
+        return 100
+    elif piazzamento == 2:
+        return 80
+    elif piazzamento == 3:
+        return 60
+    elif piazzamento == 4:
+        return 40
+    else:
+        return 10
+
 # Carica il file CSV in un DataFrame di pandas
 def load_data(file_name):
     try:
@@ -13,7 +28,7 @@ def load_data(file_name):
         data["points"] = 0
         for col in data.columns:
             if col.startswith("Tappa"):
-                data["points"] += data[col].apply(lambda x: 100 if x == 1 else (80 if x == 2 else (60 if x == 3 else (40 if x == 4 else 10))))
+                data["points"] += data[col].apply(calcola_punti)
         return data
     except Exception as e:
         st.error(f"Errore di caricamento dei dati: {e}")
