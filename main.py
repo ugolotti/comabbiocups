@@ -62,10 +62,24 @@ def tab_documenti():
     # Documenti della Comabbio Cup
 
     Di seguito è riportata la lista dei documenti disponibili per il download:
-    * [Template programma 4 squadre](./documenti/schedule_4.pdf)
-    * [Template programma 5 squadre](./documenti/schedule_5.pdf)
-    * [Template programma 6 squadre](./documenti/schedule_6.pdf)
     """)
+
+    # List of documents
+    documents = {
+        "Template programma 4 squadre": "documenti/schedule_4.pdf",
+        "Template programma 5 squadre": "documenti/schedule_5.pdf",
+        "Template programma 6 squadre": "documenti/schedule_6.pdf"
+    }
+
+    # Loop through documents and create a download button for each
+    for doc_name, doc_path in documents.items():
+        with open(doc_path, "rb") as file:
+            btn = st.download_button(
+                label=f"Scarica {doc_name}",
+                data=file,
+                file_name=os.path.basename(doc_path),
+                mime="application/pdf"
+            )
 
 
 # Tab "Sorteggio"
