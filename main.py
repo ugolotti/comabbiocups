@@ -2,6 +2,9 @@ import os
 import streamlit as st
 import pandas as pd
 import random
+from io import BytesIO
+
+from write_pdf import create_schedule_pdf_4, create_schedule_pdf_5
 
 # Set il titolo dell'app
 st.title("Gloria e Disagio - Comabbio Cup")
@@ -124,6 +127,21 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
+        if len(partecipanti) in (4, 5):
+            team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
+            buffer = BytesIO()
+            if len(partecipanti) == 4:
+                create_schedule_pdf_4(buffer, team_list)
+            else:
+                create_schedule_pdf_5(buffer, team_list)
+            buffer.seek(0)
+
+            st.download_button(
+                label="Download PDF",
+                data=buffer,
+                file_name="beach_volley_schedule.pdf",
+                mime="application/pdf"
+            )
 
 # Funzione principale
 def main():
