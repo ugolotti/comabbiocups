@@ -114,7 +114,7 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
-                team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
+                team_list = [el['Player 1'] + el['Player 2'] for _, el in df_coppie.iterrows()]
         with col2:
             if st.button("Ranking-based"):
                 # Ordina i partecipanti per punteggio
@@ -132,7 +132,7 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
-                team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
+                team_list = [el['Player 1'] + el['Player 2'] for _, el in df_coppie.iterrows()]
         if len(partecipanti) in (4, 5) and not df_coppie.empty:
 
             if st.button("Generate PDF"):
