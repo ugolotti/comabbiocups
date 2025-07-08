@@ -96,6 +96,7 @@ def tab_sorteggio():
 
     # Create placeholder, for visibility
     df_coppie = pd.DataFrame(columns=["Player 1", "Player 2"])
+    team_list = []
 
     # Se sono stati selezionati partecipanti, mostra i pulsanti
     if partecipanti:
@@ -113,6 +114,7 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
+                team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
         with col2:
             if st.button("Ranking-based"):
                 # Ordina i partecipanti per punteggio
@@ -130,8 +132,9 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
+                team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
         if len(partecipanti) in (4, 5) and not df_coppie.empty:
-            team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
+            
             buffer = BytesIO()
             if len(partecipanti) == 4:
                 create_schedule_pdf_4(buffer, team_list)
@@ -139,12 +142,13 @@ def tab_sorteggio():
                 create_schedule_pdf_5(buffer, team_list)
             buffer.seek(0)
 
-            st.download_button(
-                label="Download PDF",
-                data=buffer,
-                file_name="beach_volley_schedule.pdf",
-                mime="application/pdf"
-            )
+            if st.button("Generate PDF"):
+                st.download_button(
+                    label="Download PDF",
+                    data=buffer,
+                    file_name="beach_volley_schedule.pdf",
+                    mime="application/pdf"
+                )
 
 # Funzione principale
 def main():
