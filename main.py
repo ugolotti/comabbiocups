@@ -94,6 +94,9 @@ def tab_sorteggio():
     # Seleziona i partecipanti
     partecipanti = st.multiselect("Seleziona i partecipanti", data["Nome"].tolist())
 
+    # Create placeholder, for visibility
+    df_coppie = pd.DataFrame(columns=["Player 1", "Player 2"])
+
     # Se sono stati selezionati partecipanti, mostra i pulsanti
     if partecipanti:
         col1, col2 = st.columns(2)
