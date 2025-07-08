@@ -135,7 +135,7 @@ def tab_sorteggio():
             team_list = [el['Player 1'] + el['Player 2'] for _, el in df_coppie.iterrows()]
 
             buffer = BytesIO()
-            if len(partecipanti) == 4:
+            if len(df_coppie) == 4:
                 create_schedule_pdf_4(buffer, team_list)
             else:
                 create_schedule_pdf_5(buffer, team_list)
