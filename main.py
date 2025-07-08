@@ -134,15 +134,16 @@ def tab_sorteggio():
                 st.table(df_coppie)
                 team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
         if len(partecipanti) in (4, 5) and not df_coppie.empty:
-            
-            buffer = BytesIO()
-            if len(partecipanti) == 4:
-                create_schedule_pdf_4(buffer, team_list)
-            else:
-                create_schedule_pdf_5(buffer, team_list)
-            buffer.seek(0)
 
             if st.button("Generate PDF"):
+                buffer = BytesIO()
+                if len(partecipanti) == 4:
+                    create_schedule_pdf_4(buffer, team_list)
+                else:
+                    create_schedule_pdf_5(buffer, team_list)
+                buffer.seek(0)
+                st.success("PDF generated successfully!")
+
                 st.download_button(
                     label="Download PDF",
                     data=buffer,
