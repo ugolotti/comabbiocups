@@ -130,7 +130,7 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
-        if len(partecipanti) in (4, 5):
+        if len(partecipanti) in (4, 5) and not df_coppie.empty:
             team_list = [el['Player 1'] + el['Player 2'] for el in df_coppie]
             buffer = BytesIO()
             if len(partecipanti) == 4:
