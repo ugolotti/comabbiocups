@@ -62,9 +62,9 @@ def tab_documenti():
     # Documenti della Comabbio Cup
 
     Di seguito è riportata la lista dei documenti disponibili per il download:
-    * [Template programma 4 squadre](documenti/schedule_4.pdf)
-    * [Template programma 5 squadre](documenti/schedule_5.pdf)
-    * [Template programma 6 squadre](documenti/schedule_6.pdf)
+    * [Template programma 4 squadre](./documenti/schedule_4.pdf)
+    * [Template programma 5 squadre](./documenti/schedule_5.pdf)
+    * [Template programma 6 squadre](./documenti/schedule_6.pdf)
     """)
 
 
