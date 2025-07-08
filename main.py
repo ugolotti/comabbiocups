@@ -140,10 +140,9 @@ def tab_sorteggio():
             else:
                 create_schedule_pdf_5(buffer, team_list)
             buffer.seek(0)
-            st.success("PDF generated successfully!")
 
             st.download_button(
-                label="Download PDF",
+                label="Scarica Programma Tappa",
                 data=buffer,
                 file_name="beach_volley_schedule.pdf",
                 mime="application/pdf"
