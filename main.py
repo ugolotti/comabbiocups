@@ -5,6 +5,7 @@ import random
 from io import BytesIO
 
 from write_pdf import create_schedule_pdf_4, create_schedule_pdf_5
+from kingofthebeach import schedule_tournament, reorder_rounds_no_consecutive_rests, generate_schedule_pdf_kob
 
 # Set il titolo dell'app
 st.title("Gloria e Disagio - Comabbio Cup")
@@ -100,7 +101,7 @@ def tab_sorteggio():
 
     # Se sono stati selezionati partecipanti, mostra i pulsanti
     if partecipanti:
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
             if st.button("Genera coppie casuali"):
                 # Genera coppie casuali
@@ -131,6 +132,21 @@ def tab_sorteggio():
                 st.write("Coppie:")
                 df_coppie = pd.DataFrame(coppie, columns=["Player 1", "Player 2"])
                 st.table(df_coppie)
+        with col3:
+            if st.button("King of the Beach"):
+                if len(partecipanti) % 4 in (0, 1):
+                    exp_matches = len(partecipanti) - 1
+                else:
+                    exp_matches = len(partecipanti) - 2
+
+                while True:
+                    schedule, match_counts = schedule_tournament(partecipanti)
+                    if min(match_counts.values()) == exp_matches:
+                        break
+
+                schedule_ordered = reorder_rounds_no_consecutive_rests(schedule)
+                buffer = BytesIO()
+                generate_schedule_pdf_kob(buffer, partecipanti, schedule_ordered)
         if len(df_coppie) in (4, 5):
             team_list = [el['Player 1'] + el['Player 2'] for _, el in df_coppie.iterrows()]
 

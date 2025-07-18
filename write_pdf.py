@@ -15,11 +15,11 @@ def create_schedule_pdf_4(filename, teams=None):
 
     # Title
     c.setFont("Helvetica-Bold", 16)
-    c.drawCentredString(width / 2, height - 2 * cm, "Torneo di Beach Volley - Schedule")
+    c.drawCentredString(width / 2, height - 2 * cm, "Comabbio Cup - Schedule")
 
     # Subtitle
     c.setFont("Helvetica-Bold", 12)
-    c.drawCentredString(width / 2, height - 3 * cm, "Girone Unico - All'Italiana")
+    c.drawCentredString(width / 2, height - 3 * cm, "Girone Unico")
 
     # Table Title
     c.setFont("Helvetica-Bold", 11)
@@ -120,11 +120,11 @@ def create_schedule_pdf_5(filename, teams=None):
 
     # Title
     c.setFont("Helvetica-Bold", 16)
-    c.drawCentredString(width / 2, height - 2 * cm, "Torneo di Beach Volley - Schedule")
+    c.drawCentredString(width / 2, height - 2 * cm, "Comabbio Cup - Schedule")
 
     # Subtitle
     c.setFont("Helvetica-Bold", 12)
-    c.drawCentredString(width / 2, height - 3 * cm, "Girone Unico - All'Italiana")
+    c.drawCentredString(width / 2, height - 3 * cm, "Girone Unico")
 
     # Table Title
     c.setFont("Helvetica-Bold", 11)
