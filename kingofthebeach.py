@@ -164,6 +164,7 @@ def schedule_tournament(players):
 
     return rounds, player_match_count
 
+'''
 # Example usage:
 players = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Giulia"]
 if len(players) % 4 in (0, 1):
@@ -191,4 +192,5 @@ for p in players:
     print(f"  {p}: {match_counts[p]} matches")
 
 
-generate_schedule_pdf("tournament_schedule.pdf", players, schedule_ordered)
+generate_schedule_pdf_kob("tournament_schedule.pdf", players, schedule_ordered)
+'''
