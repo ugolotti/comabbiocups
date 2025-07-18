@@ -147,6 +147,14 @@ def tab_sorteggio():
                 schedule_ordered = reorder_rounds_no_consecutive_rests(schedule)
                 buffer = BytesIO()
                 generate_schedule_pdf_kob(buffer, partecipanti, schedule_ordered)
+                buffer.seek(0)
+
+                st.download_button(
+                    label="Scarica Programma Tappa",
+                    data=buffer,
+                    file_name="beach_volley_schedule.pdf",
+                    mime="application/pdf"
+                )
         if len(df_coppie) in (4, 5):
             team_list = [el['Player 1'] + el['Player 2'] for _, el in df_coppie.iterrows()]
 
